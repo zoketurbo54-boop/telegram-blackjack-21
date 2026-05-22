@@ -234,7 +234,7 @@ async def cmd_start(message: Message, state: FSMContext) -> None:
         "Привет! Это «21 очко» (упрощённый блэкджек).\n\n"
         "🎮 <b>Играть можно только с Premium</b> — 50 ⭐ в месяц "
         "(кнопка «⭐ Premium» или /subscribe).\n\n"
-        "Команды: /stats — статистика, /reset_stats — сброс, /subscribe — подписка.",
+        "Команды: /stats, /subscribe, /my_id (ваш id для настройки бота).",
         reply_markup=kb_start_game(),
     )
 
