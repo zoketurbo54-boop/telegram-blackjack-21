@@ -1,0 +1,26 @@
+# Шаблон systemd. Скопировать на VPS:
+#   sudo cp deploy/blackjack21.service /etc/systemd/system/blackjack21.service
+#   sudo nano /etc/systemd/system/blackjack21.service   # поправить User и пути
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable blackjack21
+#   sudo systemctl start blackjack21
+#   sudo systemctl status blackjack21
+#   journalctl -u blackjack21 -f
+
+[Unit]
+Description=Telegram bot 21 (Blackjack)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_LINUX_USER
+Group=YOUR_LINUX_USER
+WorkingDirectory=/home/YOUR_LINUX_USER/blackjack21
+Environment=APP_DIR=/home/YOUR_LINUX_USER/blackjack21
+ExecStart=/home/YOUR_LINUX_USER/blackjack21/deploy/start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
